@@ -46,7 +46,7 @@ def load_data(input_path):
         raise Exception("Input file not found")
 
     try:
-        # 🔥 FIX: Handle quoted full-row CSV
+       
         df = pd.read_csv(
             input_path,
             sep=",",
@@ -59,7 +59,7 @@ def load_data(input_path):
     if df.empty:
         raise Exception("CSV is empty")
 
-    # 🔥 Normalize column names
+
     df.columns = df.columns.str.strip().str.lower()
 
     logging.info(f"Columns found: {list(df.columns)}")
@@ -131,7 +131,7 @@ def main():
 
         write_metrics(args.output, metrics)
 
-        # Print to stdout (required for Docker)
+       
         print(json.dumps(metrics, indent=2))
 
         logging.info("Job completed successfully")
